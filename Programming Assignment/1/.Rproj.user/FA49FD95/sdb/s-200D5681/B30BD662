@@ -1,0 +1,17 @@
+{
+    "contents" : "# Programming assignment 1\n# Yohan Robinson\n# 2015-12-20\n#\n\n# ------- PART 2 -------\n\ncomplete <- function(directory, id = 1:332) {\n  #read filenames from directory\n  filelist <- list.files(path = directory, full.names = TRUE)\n  #create empty variables\n  readdata <- data.frame()\n  completecases <- data.frame()\n  nobs <- data.frame();\n  #loopsearch complete cases\n  for (i in id) { \n    readdata <- read.csv(filelist[i],header=TRUE)\n    nobs <- sum(complete.cases(readdata))\n    #create new row with id and nobs\n    completecases <- rbind(completecases, data.frame(i,nobs))\n  }\n  return(completecases)\n}\n\n",
+    "created" : 1451052889806.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1146373372",
+    "id" : "B30BD662",
+    "lastKnownWriteTime" : 1451114252,
+    "path" : "~/Dropbox/Manuscripts/datasciencecoursera/Programming Assignment/1/complete.R",
+    "project_path" : "complete.R",
+    "properties" : {
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "type" : "r_source"
+}

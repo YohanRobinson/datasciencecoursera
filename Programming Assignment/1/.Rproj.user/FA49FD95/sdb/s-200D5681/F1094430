@@ -1,0 +1,17 @@
+{
+    "contents" : "# Programming assignment 1\n# Yohan Robinson\n# 2015-12-20\n#\n\n# ------- Part 3 -------\n#\n\ncorr <- function(directory, threshold = integer(1000000)) {\n  #read filenames from directory\n  filelist <- list.files(path = directory, full.names = TRUE)\n  #create empty variables\n  readdata <- data.frame()\n  rd <- matrix()  \n  n <- 0\n  for (i in 1:332) {\n    if (as.data.frame(complete(directory,i)$nobs[1])>=threshold){\n      n <- n+1\n      readdata <- read.csv(filelist[i], header=TRUE)\n      rd[n] <- cor(readdata$sulfate,readdata$nitrate, use=\"pairwise.complete.obs\")\n    }\n  }\n  data.frame(rd)\n  return(rd)\n}\n\n",
+    "created" : 1450629444465.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "677494313",
+    "id" : "F1094430",
+    "lastKnownWriteTime" : 1451114812,
+    "path" : "~/Dropbox/Manuscripts/datasciencecoursera/Programming Assignment/1/corr.R",
+    "project_path" : "corr.R",
+    "properties" : {
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "type" : "r_source"
+}
