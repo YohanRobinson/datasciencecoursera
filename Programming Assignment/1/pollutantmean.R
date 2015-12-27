@@ -29,3 +29,4 @@ pollutantmean <- function(directory,pollutant=c("sulfate","nitrate"), id=1:332){
 }
 
 
+library(KernSmooth)

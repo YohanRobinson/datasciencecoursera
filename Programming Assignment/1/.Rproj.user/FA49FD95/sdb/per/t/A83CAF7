@@ -1,0 +1,17 @@
+{
+    "contents" : "# Programming assignment 1\n# Yohan Robinson\n# 2015-12-20\n#\nrm(list=ls()) \n\n# ------- PART 1 -------\n# Function for creating character filename from integer value\n\n\n\n# Function for pollutant mean of monitors with the id numbers in the vector \"id\"\npollutantmean <- function(directory,pollutant=c(\"sulfate\",\"nitrate\"), id=1:332){\n  makefilename <- function (directory, fn=integer(1:332)){\n    idname <- c(\"0\",\"0\",\"0\")\n    if (fn>99) idname[1] <- as.integer(fn/100)\n    if (fn>9) idname[2] <- as.integer((fn - (as.integer(idname[1])*100))/10)\n    idname[3] <- fn - (as.integer(idname[1])*100) - (as.integer(idname[2])*10)\n    filename <- paste0(directory,\"/\",idname[1],idname[2],idname[3],\".csv\")\n    return(filename)\n  }     \n  rd <- data.frame()\n  for (i in 1:length(id)){\n          readdata <- read.csv(makefilename(directory, id[i]),header=T)\n          rd <- rbind(rd,readdata)\n  }\n  rd <- subset(rd,!is.na(rd[,pollutant]))\n  return(mean(as.numeric(rd[,pollutant])))\n}\n\n\nlibrary(KernSmooth)\n",
+    "created" : 1451052895807.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3697087807",
+    "id" : "A83CAF7",
+    "lastKnownWriteTime" : 1451117632,
+    "path" : "~/Dropbox/Manuscripts/datasciencecoursera/Programming Assignment/1/pollutantmean.R",
+    "project_path" : "pollutantmean.R",
+    "properties" : {
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "type" : "r_source"
+}
